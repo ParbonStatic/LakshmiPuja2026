@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shree Lakshmi Puja | Welcoming Goddess Mahalakshmi</title>
+  <meta name="description" content="A digital festive tribute to Goddess Mahalakshmi. Explore the Ashta Lakshmi, sacred rituals, divine mantras, and light a virtual diya for blessings.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sacred-pink': '#E91E63',
+            'lotus-soft': '#FCE4EC',
+            'lotus-rose': '#F06292',
+            'temple-gold': '#D4AF37',
+            'deep-gold': '#AA820A',
+            'vermilion': '#8B0000',
+            'kumkum': '#B71C1C',
+            'marigold': '#FF8F00',
+            'ivory': '#FFFDF8',
+            'deep-maroon': '#4A0E17',
+            'night-temple': '#240810'
+          },
+          fontFamily: {
+            'display': ['"Playfair Display"', 'serif'],
+            'cinzel': ['"Cinzel Decorative"', 'serif'],
+            'body': ['"Poppins"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles and Festive Animations -->
+  <style>
+    body {
+      background-color: #FFFDF8;
+      color: #332024;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Traditional Indian Rangoli Pattern Overlay */
+    .rangoli-bg {
+      background-color: #26050e;
+      background-image: 
+        radial-gradient(#d4af37 0.75px, transparent 0.75px),
+        radial-gradient(#e91e63 0.75px, #26050e 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+
+    .alpana-border {
+      background: linear-gradient(90deg, #D4AF37, #FF8F00, #E91E63, #FF8F00, #D4AF37);
+      height: 4px;
+    }
+
+    /* Diya Flame Glow Animation */
+    @keyframes flameFlicker {
+      0%, 100% {
+        transform: scale(1) rotate(-1deg);
+        filter: drop-shadow(0 0 10px #ffb300) drop-shadow(0 0 20px #ff6f00);
+      }
+      50% {
+        transform: scale(1.08) rotate(1.5deg);
+        filter: drop-shadow(0 0 18px #ffd54f) drop-shadow(0 0 30px #ff3d00);
+      }
+    }
+
+    .diya-flame-animated {
+      animation: flameFlicker 1.8s infinite ease-in-out;
+      transform-origin: bottom center;
+    }
+
+    /* Soft Floating Lotus Animation */
+    @keyframes subtleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1deg); }
+    }
+
+    .floating-lotus {
+      animation: subtleFloat 5s infinite ease-in-out;
+    }
+
+    /* Golden Glow Text */
+    .gold-shimmer-text {
+      background: linear-gradient(135deg, #FFE082 0%, #FFD700 35%, #FFF8E1 50%, #D4AF37 80%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFFDF8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B71C1C;
+    }
+
+    /* Confetti Particle */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0.9;
+      pointer-events: none;
+      animation: fallDown 3s linear forwards;
+    }
+
+    @keyframes fallDown {
+      0% {
+        transform: translateY(-20px) rotate(0deg) scale(0.6);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(450px) rotate(720deg) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Traditional Indian Ornate Card Borders & Glow */
+    .ornate-card-border {
+      background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.12), transparent 70%),
+                  radial-gradient(circle at bottom right, rgba(233, 30, 99, 0.08), transparent 70%),
+                  #FFFDF8;
+      border: 2px solid #D4AF37;
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25), 0 20px 45px -12px rgba(183, 28, 28, 0.15);
+    }
+
+    /* Print Styles: Isolates ONLY the Blessing Greeting Card */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+      #blessingPrintArea,
+      #blessingPrintArea * {
+        visibility: visible !important;
+      }
+      #blessingPrintArea {
+        position: absolute !important;
+        left: 0 !important;
+        top: 20px !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 640px !important;
+        padding: 36px 28px !important;
+        background: #FFFDF8 !important;
+        border: 4px double #D4AF37 !important;
+        border-radius: 16px !important;
+        box-shadow: none !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-ivory text-gray-800">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-kumkum via-sacred-pink to-vermilion text-amber-100 text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wider shadow-inner flex items-center justify-center space-x-2">
+    <span>🪔 शुभ दीपावली एवं कोजागरी लक्खी पूजा | Shubh Maha Lakshmi Puja 🪔</span>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 z-50 bg-ivory/95 backdrop-blur-md border-b border-temple-gold/30 shadow-sm transition-all duration-300" id="mainNavbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Festive Logo -->
+        <a href="#home" class="flex items-center space-x-3 group">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-sacred-pink to-temple-gold flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-spa text-2xl text-amber-100"></i>
+          </div>
+          <div>
+            <span class="block font-display text-xl sm:text-2xl font-bold tracking-tight text-deep-maroon group-hover:text-sacred-pink transition-colors">
+              श्री Lakshmi Puja
+            </span>
+            <span class="block text-[11px] font-semibold text-deep-gold tracking-widest uppercase -mt-1">
+              Divine Grace & Abundance
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide text-gray-700">
+          <a href="#home" class="hover:text-sacred-pink transition-colors">Home</a>
+          <a href="#significance" class="hover:text-sacred-pink transition-colors">Significance</a>
+          <a href="#ashta-lakshmi" class="hover:text-sacred-pink transition-colors">Ashta Lakshmi</a>
+          <a href="#rituals" class="hover:text-sacred-pink transition-colors">Rituals</a>
+          <a href="#mantras" class="hover:text-sacred-pink transition-colors">Mantras</a>
+          <a href="#blessing-generator" class="bg-gradient-to-r from-sacred-pink to-temple-gold text-white px-5 py-2.5 rounded-full shadow hover:shadow-lg hover:brightness-105 transition-all flex items-center space-x-2">
+            <i class="fa-solid fa-fire-flame-curved text-amber-200"></i>
+            <span>Light a Diya</span>
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" type="button" class="text-deep-maroon hover:text-sacred-pink focus:outline-none p-2 rounded-lg" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-ivory border-t border-temple-gold/30 px-6 py-5 shadow-xl transition-all">
+      <div class="flex flex-col space-y-4 font-semibold text-gray-700 text-base">
+        <a href="#home" class="mobile-nav-link hover:text-sacred-pink">Home</a>
+        <a href="#significance" class="mobile-nav-link hover:text-sacred-pink">Significance</a>
+        <a href="#ashta-lakshmi" class="mobile-nav-link hover:text-sacred-pink">Ashta Lakshmi</a>
+        <a href="#rituals" class="mobile-nav-link hover:text-sacred-pink">Rituals</a>
+        <a href="#mantras" class="mobile-nav-link hover:text-sacred-pink">Mantras</a>
+        <a href="#blessing-generator" class="mobile-nav-link inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-sacred-pink to-temple-gold text-white px-5 py-3 rounded-full text-center">
+          <i class="fa-solid fa-fire-flame-curved text-amber-200"></i>
+          <span>Light a Virtual Diya</span>
+        </a>
+      </div>
+    </div>
+    <div class="alpana-border"></div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative rangoli-bg text-white py-20 lg:py-28 overflow-hidden">
+    <!-- Decorative Ambient Glows -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-sacred-pink/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-temple-gold/25 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center space-x-2 bg-sacred-pink/30 border border-temple-gold/40 px-4 py-1.5 rounded-full text-temple-gold text-xs sm:text-sm font-semibold mb-6 backdrop-blur-sm">
+            <i class="fa-solid fa-om text-sm"></i>
+            <span>ॐ श्रीं ह्रीं क्लीं महालक्ष्म्यै नमः</span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Welcoming Goddess <span class="gold-shimmer-text">Mahalakshmi</span> Into Every Heart & Hearth
+          </h1>
+
+          <p class="text-base sm:text-lg text-rose-100/90 leading-relaxed font-light mb-8 max-w-2xl mx-auto lg:mx-0">
+            Revered as the goddess of divine wealth, purity, light, and auspicious beginnings. From the churning of the cosmic ocean to holy Kojagari Purnima and Diwali night, invoke her timeless blessings to dispel gloom and illuminate your spiritual journey.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#rituals" class="w-full sm:w-auto px-8 py-3.5 bg-temple-gold hover:bg-yellow-500 text-deep-maroon font-bold rounded-full shadow-lg hover:shadow-yellow-500/30 transition-all flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-scroll"></i>
+              <span>Explore Traditions</span>
+            </a>
+            <a href="#blessing-generator" class="w-full sm:w-auto px-8 py-3.5 border-2 border-lotus-rose hover:bg-lotus-rose/20 text-white font-semibold rounded-full backdrop-blur-sm transition-all flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-hands-praying text-temple-gold"></i>
+              <span>Receive Divine Blessing</span>
+            </a>
+          </div>
+
+          <!-- Quick Fact Counter -->
+          <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-rose-200/20 text-center">
+            <div>
+              <p class="font-display text-2xl lg:text-3xl font-bold text-temple-gold">8</p>
+              <p class="text-xs text-rose-200/80 uppercase tracking-wider mt-1">Divine Forms (Ashta)</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl lg:text-3xl font-bold text-temple-gold">14</p>
+              <p class="text-xs text-rose-200/80 uppercase tracking-wider mt-1">Sacred Diyas Lit</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl lg:text-3xl font-bold text-temple-gold">108</p>
+              <p class="text-xs text-rose-200/80 uppercase tracking-wider mt-1">Cosmic Names</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Festive Visual Centerpiece -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-72 sm:w-80 md:w-96 aspect-square flex items-center justify-center">
+            <!-- Pulsing Circle Glow -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-sacred-pink/40 to-temple-gold/40 rounded-full blur-2xl animate-pulse"></div>
+            
+            <!-- Traditional Halo Medallion -->
+            <div class="relative w-full h-full rounded-full border-4 border-dashed border-temple-gold/60 p-4 flex items-center justify-center bg-deep-maroon/60 backdrop-blur-md shadow-2xl">
+              <div class="w-full h-full rounded-full border-2 border-temple-gold flex flex-col items-center justify-center text-center p-6 bg-gradient-to-b from-kumkum/60 to-night-temple/90">
+                
+                <!-- Diya Centerpiece -->
+                <div class="relative mb-3 floating-lotus">
+                  <!-- Flame -->
+                  <div class="w-8 h-12 bg-gradient-to-t from-orange-500 via-yellow-300 to-white rounded-full mx-auto diya-flame-animated shadow-[0_0_25px_#ff9800]"></div>
+                  <!-- Diya Base (SVG) -->
+                  <svg class="w-24 h-12 text-temple-gold fill-current" viewBox="0 0 100 50">
+                    <path d="M5 20 Q50 60 95 20 Q50 35 5 20 Z" />
+                    <ellipse cx="50" cy="22" rx="42" ry="6" fill="#8B4513" opacity="0.4" />
+                  </svg>
+                </div>
+
+                <div class="text-temple-gold text-2xl mb-1">
+                  <i class="fa-solid fa-spa text-sacred-pink"></i>
+                </div>
+                <h3 class="font-display font-bold text-xl text-yellow-100 mb-1">पद्मासना देवी</h3>
+                <p class="text-xs text-amber-200 font-light italic max-w-xs leading-relaxed">
+                  "She who sits upon the sacred pink lotus, radiating grace, wealth, and supreme inner light."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divine Significance & Legend Section -->
+  <section id="significance" class="py-20 bg-ivory relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sacred-pink font-semibold uppercase tracking-widest text-xs">Divine Origins & Philosophy</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-maroon mt-2 mb-4">
+          The Cosmic Legend of Mahalakshmi
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-sacred-pink via-temple-gold to-sacred-pink mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Story Card 1 -->
+        <div class="bg-white rounded-2xl p-8 border border-temple-gold/25 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-lotus-soft text-sacred-pink flex items-center justify-center text-2xl mb-6 shadow-inner">
+              <i class="fa-solid fa-water"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-deep-maroon mb-3">Samudra Manthan</h3>
+            <p class="text-sm text-gray-600 leading-relaxed font-normal">
+              During the cosmic churning of the celestial milky ocean (Kshira Sagara) by Devas and Asuras, Goddess Lakshmi emerged holding a blossomed pink lotus, selecting Lord Vishnu as her eternal consort and bringing divine radiance back to the universe.
+            </p>
+          </div>
+        </div>
+
+        <!-- Story Card 2 -->
+        <div class="bg-white rounded-2xl p-8 border border-temple-gold/25 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-temple-gold flex items-center justify-center text-2xl mb-6 shadow-inner">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-deep-maroon mb-3">Kojagari & Deepavali</h3>
+            <p class="text-sm text-gray-600 leading-relaxed font-normal">
+              Celebrated predominantly during the full moon of Kojagari Purnima in eastern states and on the holy new-moon night of Kartik Deepavali nationwide. It is believed she wanders through towns, blessing homes that are clean, illuminated, and harmonious.
+            </p>
+          </div>
+        </div>
+
+        <!-- Story Card 3 -->
+        <div class="bg-white rounded-2xl p-8 border border-temple-gold/25 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-rose-50 text-kumkum flex items-center justify-center text-2xl mb-6 shadow-inner">
+              <i class="fa-solid fa-coins"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-deep-maroon mb-3">Wealth Beyond Gold</h3>
+            <p class="text-sm text-gray-600 leading-relaxed font-normal">
+              In Vedic understanding, "Lakshmi" is derived from <em>Lakshya</em>, signifying the ultimate purpose. Her auspicious grace encompasses not merely material gold, but clarity of intellect (Dhi), agricultural abundance, righteous courage, and inner contentment.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Highlight Banner -->
+      <div class="mt-12 bg-gradient-to-r from-deep-maroon via-vermilion to-deep-maroon rounded-3xl p-8 lg:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-temple-gold/40">
+        <div class="space-y-2 text-center md:text-left">
+          <h4 class="font-display text-2xl font-bold text-yellow-200">"Alakshmi Pariharam, Lakshmi Pravesham"</h4>
+          <p class="text-sm text-rose-100 max-w-2xl font-light">
+            Dispelling lethargy, ignorance, and discord (Alakshmi) while ushering in vitality, knowledge, and righteous harmony (Lakshmi) through genuine devotion and clean surroundings.
+          </p>
+        </div>
+        <a href="#mantras" class="whitespace-nowrap px-6 py-3 bg-temple-gold hover:bg-yellow-400 text-deep-maroon font-bold text-sm rounded-full transition-colors shadow">
+          Recite Stotras
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Ashta Lakshmi Showcase -->
+  <section id="ashta-lakshmi" class="py-20 bg-rose-50/60 relative border-t border-temple-gold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sacred-pink font-semibold uppercase tracking-widest text-xs">The Eightfold Manifestations</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-maroon mt-2 mb-4">
+          The Sacred Ashta Lakshmi
+        </h2>
+        <p class="text-gray-600 text-sm sm:text-base">
+          Mahalakshmi expresses herself in eight divine dimensions, nourishing body, intellect, spirit, and life.
+        </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-sacred-pink via-temple-gold to-sacred-pink mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 1. Adi Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०१</span>
+              <i class="fa-solid fa-atom text-temple-gold text-xl group-hover:scale-110 transition-transform"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Adi Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Primordial Source & Consciousness</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              The primeval form representing the limitless origin of all creation, providing eternal spiritual calm and release from worldly suffering.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Abhaya Mudra & Pink Lotus
+          </div>
+        </div>
+
+        <!-- 2. Dhanya Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०२</span>
+              <i class="fa-solid fa-wheat-awn text-temple-gold text-xl group-hover:scale-110 transition-transform"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Dhanya Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Agricultural Nourishment</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              Bestower of food grains, wholesome harvest, and bodily vitality. She ensures no devotee suffers from hunger or scarcity of physical sustenance.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Paddy sheaves & Sugarcane
+          </div>
+        </div>
+
+        <!-- 3. Dhairya / Veera Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०३</span>
+              <i class="fa-solid fa-shield-halved text-temple-gold text-xl group-hover:scale-110 transition-transform"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Dhairya Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Courage, Valor & Equanimity</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              Furnishes inner fortitude, patience, and fearlessness during life’s deepest adversities, keeping our resolve unwavering and pure.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Bow, Arrow & Chakra
+          </div>
+        </div>
+
+        <!-- 4. Gaja Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०४</span>
+              <svg class="w-6 h-6 text-temple-gold group-hover:scale-110 transition-transform fill-current" viewBox="0 0 24 24" aria-hidden="true" title="Royal Gaja (Elephant)">
+                <path d="M19.5 7.5c-.8 0-1.5.7-1.5 1.5v1.2c-.6-.4-1.3-.7-2.1-.7H13c-.6 0-1.2.2-1.7.5-.5-.8-1.4-1.5-2.5-1.5H5C3.3 8.5 2 9.8 2 11.5V16c0 1.1.9 2 2 2h1v3.5c0 .8.7 1.5 1.5 1.5h1c.8 0 1.5-.7 1.5-1.5V18h3v3.5c0 .8.7 1.5 1.5 1.5h1c.8 0 1.5-.7 1.5-1.5V18h.6c1.3 0 2.4-1 2.4-2.3V12h.5c1.4 0 2.5-1.1 2.5-2.5 0-.4-.1-.8-.3-1.1.8-.4 1.3-1.2 1.3-2.1 0-1.4-1.1-2.5-2.5-2.5h-1c-.3 0-.5.2-.5.5v1.5c0 .6.4 1 1 1h.5c.3 0 .5.2.5.5s-.2.5-.5.5zm-14 3h3.8c.7 0 1.2.5 1.2 1.2v.3H5.5c-.3 0-.5-.2-.5-.5s.2-1 .5-1z"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Gaja Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Sovereignty & Animal Wealth</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              Flanked by royal white elephants performing lustration, she bestows leadership, societal honor, regal grace, and bovine bounty.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Sacred Elephants & Kalash
+          </div>
+        </div>
+
+        <!-- 5. Santana Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०५</span>
+              <i class="fa-solid fa-baby text-temple-gold text-xl group-hover:scale-110 transition-transform"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Santana Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Progeny, Family & Heritage</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              Guardian of families, blessed lineage, virtuous offspring, and harmonious domestic joy across generations.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Child upon her lap
+          </div>
+        </div>
+
+        <!-- 6. Vijaya Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०६</span>
+              <i class="fa-solid fa-trophy text-temple-gold text-xl group-hover:scale-110 transition-transform"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Vijaya Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Triumph Over Hurdles</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              Also known as Jaya Lakshmi; she grants unconditional success in righteous pursuits, career milestones, and ethical battles.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Conch, Disc & Sword
+          </div>
+        </div>
+
+        <!-- 7. Vidya Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०७</span>
+              <i class="fa-solid fa-book-open text-temple-gold text-xl group-hover:scale-110 transition-transform"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Vidya Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Wisdom, Intellect & Fine Arts</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              Endower of spiritual insight, scholarly wisdom, refined artistic talent, and the discrimination to apply knowledge cleanly.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Sacred Veda Manuscripts
+          </div>
+        </div>
+
+        <!-- 8. Dhana Lakshmi -->
+        <div class="bg-white rounded-2xl p-6 border border-temple-gold/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-full bg-lotus-soft text-sacred-pink font-bold flex items-center justify-center text-sm">०८</span>
+              <i class="fa-solid fa-sack-dollar text-temple-gold text-xl group-hover:scale-110 transition-transform"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-deep-maroon">Dhana Lakshmi</h3>
+            <p class="text-xs text-sacred-pink font-semibold mb-3">Material Abundance & Gold</p>
+            <p class="text-xs text-gray-600 leading-relaxed font-normal">
+              Dispenser of honest financial security, wealth, and commercial vitality, enabling one to conduct philanthropic charity.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] font-semibold text-deep-gold">
+            Symbol: Golden Pitcher & Coins
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Core Rituals & Traditions -->
+  <section id="rituals" class="py-20 bg-ivory">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sacred-pink font-semibold uppercase tracking-widest text-xs">Pavitra Vidhi & Observances</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-deep-maroon mt-2 mb-4">
+          Core Rituals & Traditions
+        </h2>
+        <p class="text-gray-600 text-sm sm:text-base">
+          Time-honored festive customs that sanctify the atmosphere and turn dwellings into temples of serenity.
+        </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-sacred-pink via-temple-gold to-sacred-pink mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Ritual 1 -->
+        <div class="bg-white rounded-2xl p-6 border-t-4 border-sacred-pink shadow-md hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-pink-100 text-sacred-pink flex items-center justify-center text-xl mb-5">
+            <i class="fa-solid fa-shoe-prints"></i>
+          </div>
+          <h3 class="font-display text-lg font-bold text-deep-maroon mb-2">Alpanā & Charan Paduka</h3>
+          <p class="text-xs text-gray-600 leading-relaxed font-normal">
+            Intricate rice paste designs (Alpanā or Rangoli) are painted at thresholds, accompanied by miniature red footprints entering inward—symbolizing the welcome of Lakshmi into the home.
+          </p>
+        </div>
+
+        <!-- Ritual 2 -->
+        <div class="bg-white rounded-2xl p-6 border-t-4 border-temple-gold shadow-md hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-deep-gold flex items-center justify-center text-xl mb-5">
+            <i class="fa-solid fa-jar"></i>
+          </div>
+          <h3 class="font-display text-lg font-bold text-deep-maroon mb-2">Kalash Sthapana</h3>
+          <p class="text-xs text-gray-600 leading-relaxed font-normal">
+            A sanctified brass or copper pot filled with sacred water, coins, and supari, crowned with 5 mango leaves and an unpeeled coconut wrapped in red mauli string, enshrining universal vitality.
+          </p>
+        </div>
+
+        <!-- Ritual 3 -->
+        <div class="bg-white rounded-2xl p-6 border-t-4 border-marigold shadow-md hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-orange-100 text-marigold flex items-center justify-center text-xl mb-5">
+            <i class="fa-solid fa-fire-burner"></i>
+          </div>
+          <h3 class="font-display text-lg font-bold text-deep-maroon mb-2">14 Diyas & Deep Daan</h3>
+          <p class="text-xs text-gray-600 leading-relaxed font-normal">
+            Lighting fourteen sacred earthen lamps using mustard or sesame oil across verandas, windows, and tulsi altars to pierce autumnal shadows and ward off stagnation and ignorance.
+          </p>
+        </div>
+
+        <!-- Ritual 4 -->
+        <div class="bg-white rounded-2xl p-6 border-t-4 border-kumkum shadow-md hover:shadow-lg transition-all">
+          <div class="w-12 h-12 rounded-xl bg-red-100 text-kumkum flex items-center justify-center text-xl mb-5">
+            <i class="fa-solid fa-apple-whole"></i>
+          </div>
+          <h3 class="font-display text-lg font-bold text-deep-maroon mb-2">Satvik Bhog & Naivedya</h3>
+          <p class="text-xs text-gray-600 leading-relaxed font-normal">
+            Offering puffed rice (khoi/muri), batasha sugar drops, coconut ladoos (narkel naru), five seasonal fruits, and fragrant kheer, shared joyously with neighbors and those in need.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sacred Shlokas & Chants -->
+  <section id="mantras" class="py-20 rangoli-bg text-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-temple-gold font-semibold uppercase tracking-widest text-xs">Divine Vibrations</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-yellow-100 mt-2 mb-4">
+          Sacred Shlokas & Mantras
+        </h2>
+        <p class="text-rose-100/80 text-sm sm:text-base">
+          Chanted during Pradosh Kaal to awaken serenity, inner luminosity, and benevolent energy.
+        </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-sacred-pink via-temple-gold to-sacred-pink mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Shloka 1: Lakshmi Gayatri Mantra -->
+        <div class="bg-deep-maroon/70 backdrop-blur-md rounded-2xl p-8 border border-temple-gold/40 shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs uppercase tracking-widest font-bold text-sacred-pink bg-sacred-pink/20 px-3 py-1 rounded-full border border-sacred-pink/30">
+                Lakshmi Gayatri Mantra
+              </span>
+              <button onclick="playMantraBell()" class="text-temple-gold hover:text-white transition-colors text-lg" title="Devotional Bell Sound">
+                <i class="fa-solid fa-bell"></i>
+              </button>
+            </div>
+            <p class="font-display text-xl sm:text-2xl text-yellow-200 font-semibold mb-4 leading-relaxed">
+              ॐ महालक्ष्मै च विद्महे विष्णुपत्नी च धीमहि।<br>
+              तन्नो लक्ष्मीः प्रचोदयात्॥
+            </p>
+            <p class="text-xs text-rose-200/90 italic mb-4 font-light">
+              "Om Mahalakshmayi Cha Vidmahe, Vishnu-Patnyi Cha Dhimahi, Tanno Lakshmih Prachodayat."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-rose-200/20 text-xs text-gray-300 font-light">
+            <strong>Meaning:</strong> May we perceive the supreme Goddess of fortune. We meditate upon the divine consort of Lord Vishnu; may that glorious Mahalakshmi illumine and inspire our intellect.
+          </div>
+        </div>
+
+        <!-- Shloka 2: Mahalakshmi Beej Mantra -->
+        <div class="bg-deep-maroon/70 backdrop-blur-md rounded-2xl p-8 border border-temple-gold/40 shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs uppercase tracking-widest font-bold text-sacred-pink bg-sacred-pink/20 px-3 py-1 rounded-full border border-sacred-pink/30">
+                Lakshmi Beej Mantra
+              </span>
+              <button onclick="playMantraBell()" class="text-temple-gold hover:text-white transition-colors text-lg" title="Devotional Bell Sound">
+                <i class="fa-solid fa-bell"></i>
+              </button>
+            </div>
+            <p class="font-display text-xl sm:text-2xl text-yellow-200 font-semibold mb-4 leading-relaxed">
+              ॐ श्रीं ह्रीं क्लीं त्रिभुवन महालक्ष्म्यै अस्मांक दारिद्र्य नाशय प्रचुर धन देहि देहि क्लीं ह्रीं श्रीं ॐ ॥
+            </p>
+            <p class="text-xs text-rose-200/90 italic mb-4 font-light">
+              "Om Shreem Hreem Kleem Tribhuvana Mahalakshmyai Asmaka Daridrya Nashaya Prachura Dhana Dehi Dehi Kleem Hreem Shreem Om."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-rose-200/20 text-xs text-gray-300 font-light">
+            <strong>Meaning:</strong> Salutations to the sovereign mother of the three realms. Dispel our inner and outer scarcities, and bless us with spiritual and physical prosperity.
+          </div>
+        </div>
+
+        <!-- Shloka 3: Mahalakshmi Ashtakam Excerpt -->
+        <div class="bg-deep-maroon/70 backdrop-blur-md rounded-2xl p-8 border border-temple-gold/40 shadow-xl flex flex-col justify-between md:col-span-2">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs uppercase tracking-widest font-bold text-sacred-pink bg-sacred-pink/20 px-3 py-1 rounded-full border border-sacred-pink/30">
+                From Mahalakshmi Ashtakam (Indra Rachita)
+              </span>
+              <button onclick="playMantraBell()" class="text-temple-gold hover:text-white transition-colors text-lg" title="Devotional Bell Sound">
+                <i class="fa-solid fa-bell"></i>
+              </button>
+            </div>
+            <p class="font-display text-lg sm:text-xl text-yellow-200 font-semibold mb-3 leading-relaxed">
+              नमस्तेऽस्तु महामाये श्रीपीठे सुरपूजिते। शङ्खचक्रगदाहस्ते महालक्ष्मि नमोऽस्तु ते॥<br>
+              नमस्ते गरुडारूढे कोलासुरभयङ्करि। सर्वपापहरे देवि महालक्ष्मि नमोऽस्तु ते॥
+            </p>
+            <p class="text-xs text-rose-200/90 italic mb-3 font-light">
+              "Namastestu Mahamaye Shree-peethe Sura-poojite | Shankha-chakra-gada-haste Mahalakshmi Namostu Te ||"
+            </p>
+          </div>
+          <div class="pt-4 border-t border-rose-200/20 text-xs text-gray-300 font-light">
+            <strong>Meaning:</strong> Obeisance to the great cosmic illusion, seated upon the throne of grace and venerated by the devas. Holder of the conch, discus, and mace, salutations unto You, O Mahalakshmi.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Virtual Diya & Blessing Generator -->
+  <section id="blessing-generator" class="py-20 bg-gradient-to-b from-ivory to-rose-50/80 relative overflow-hidden">
+    <!-- Confetti Container -->
+    <div id="confettiContainer" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-sacred-pink font-semibold uppercase tracking-widest text-xs">Sacred Interactive Altar</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-deep-maroon mt-2 mb-3">
+          Light a Virtual Diya & Receive Divine Blessing
+        </h2>
+        <p class="text-sm text-gray-600">
+          Enter your name, dedicate your heart’s earnest aspiration, and light your festive lamp to receive Goddess Lakshmi’s auspicious Prasad and customized shloka.
+        </p>
+      </div>
+
+      <!-- Altar Box -->
+      <div class="bg-white rounded-3xl border-2 border-temple-gold/40 shadow-2xl p-6 sm:p-10 relative">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          <!-- Form Inputs -->
+          <form id="diyaForm" onsubmit="event.preventDefault(); lightVirtualDiya();" class="space-y-5">
+            <div>
+              <label for="devoteeName" class="block text-xs font-bold text-deep-maroon uppercase tracking-wider mb-1.5">
+                Your Name / Family Name
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400">
+                  <i class="fa-solid fa-user text-sm"></i>
+                </span>
+                <input type="text" id="devoteeName" required placeholder="e.g., Ananya Sharma" 
+                  class="w-full pl-10 pr-4 py-3 text-sm rounded-xl border border-gray-300 focus:border-sacred-pink focus:ring-2 focus:ring-sacred-pink/30 outline-none transition-all">
+              </div>
+            </div>
+
+            <div>
+              <label for="blessingType" class="block text-xs font-bold text-deep-maroon uppercase tracking-wider mb-1.5">
+                Sankalpa (Intention / Blessing Sought)
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400">
+                  <i class="fa-solid fa-gem text-sm"></i>
+                </span>
+                <select id="blessingType" class="w-full pl-10 pr-4 py-3 text-sm rounded-xl border border-gray-300 focus:border-sacred-pink focus:ring-2 focus:ring-sacred-pink/30 outline-none bg-white transition-all">
+                  <option value="abundance">Dhana & Dhanya (Abundance & Sustenance)</option>
+                  <option value="wisdom">Vidya & Buddhi (Knowledge & Clear Vision)</option>
+                  <option value="health">Arogya & Shanti (Health, Vitality & Inner Peace)</option>
+                  <option value="family">Santana & Harmony (Domestic Bliss & Unity)</option>
+                  <option value="success">Vijaya & Courage (Triumph in Righteous Endeavors)</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" id="lightDiyaBtn" class="w-full py-4 bg-gradient-to-r from-kumkum via-sacred-pink to-temple-gold text-white font-bold rounded-xl shadow-lg hover:shadow-sacred-pink/30 hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-fire text-amber-200"></i>
+              <span>Light My Sacred Diya</span>
+            </button>
+          </form>
+
+          <!-- Interactive Diya Canvas / Preview -->
+          <div class="flex flex-col items-center justify-center bg-gradient-to-b from-rose-50 to-amber-50/50 rounded-2xl p-6 border border-temple-gold/30 min-h-[280px]">
+            <div id="diyaGlowArea" class="relative flex flex-col items-center transition-all duration-700">
+              
+              <!-- Flame (Initially dimmed until clicked) -->
+              <div id="altarFlame" class="w-8 h-12 bg-gradient-to-t from-gray-300 to-gray-200 rounded-full mx-auto opacity-30 transition-all duration-700"></div>
+
+              <!-- Clay Lamp Body -->
+              <div class="relative -mt-2">
+                <svg class="w-32 h-16 text-amber-800 fill-current" viewBox="0 0 100 50">
+                  <path d="M5 20 Q50 65 95 20 Q50 35 5 20 Z" />
+                  <ellipse cx="50" cy="22" rx="42" ry="6" fill="#5C2C16" />
+                </svg>
+                <div class="w-16 h-2 bg-temple-gold/40 rounded-full mx-auto -mt-2 blur-sm"></div>
+              </div>
+
+              <!-- Diya Status Label -->
+              <p id="diyaStatusText" class="text-xs font-semibold text-gray-500 mt-4 tracking-wide uppercase">
+                Awaiting your offering...
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Generated Blessing Result Card (Hidden by default) -->
+        <div id="blessingResultCard" class="hidden mt-10 pt-10 border-t border-temple-gold/30">
+          
+          <!-- Card Printable Container -->
+          <div id="blessingPrintArea" class="ornate-card-border rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden transition-all duration-500">
+            
+            <!-- Traditional Corner Accents -->
+            <div class="absolute top-3.5 left-3.5 text-temple-gold/60 text-base select-none">❖</div>
+            <div class="absolute top-3.5 right-3.5 text-temple-gold/60 text-base select-none">❖</div>
+            <div class="absolute bottom-3.5 left-3.5 text-temple-gold/60 text-base select-none">❖</div>
+            <div class="absolute bottom-3.5 right-3.5 text-temple-gold/60 text-base select-none">❖</div>
+
+            <!-- Auspicious Header -->
+            <div class="flex items-center justify-center space-x-2 text-xs font-bold text-sacred-pink uppercase tracking-widest mb-2">
+              <span>🪔</span>
+              <span>ॐ श्रीं महालक्ष्म्यै नमः</span>
+              <span>🪔</span>
+            </div>
+
+            <div class="inline-block bg-gradient-to-r from-kumkum via-sacred-pink to-temple-gold text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-sm mb-3">
+              महाप्रसाद & Divine Blessing Card
+            </div>
+
+            <!-- Diya Lotus Icon -->
+            <div class="w-12 h-12 mx-auto rounded-full bg-lotus-soft/80 border border-temple-gold/40 flex items-center justify-center text-sacred-pink text-xl mb-3 shadow-inner">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+
+            <!-- Recipient Heading -->
+            <h3 id="blessingRecipientTitle" class="font-display text-2xl sm:text-3xl font-bold text-deep-maroon mb-1 tracking-wide">
+              Blessings for Ananya Sharma
+            </h3>
+
+            <!-- Sankalpa Tag -->
+            <div class="mb-4">
+              <span id="blessingCategoryTag" class="inline-block text-xs font-semibold text-deep-gold bg-amber-50 border border-temple-gold/30 px-3 py-0.5 rounded-full">
+                Dhana & Dhanya Lakshmi Sankalpa
+              </span>
+            </div>
+
+            <!-- Blessing Message -->
+            <div class="max-w-2xl mx-auto my-4 p-5 rounded-2xl bg-amber-50/60 border border-temple-gold/30 shadow-inner">
+              <p id="blessingMessage" class="text-sm sm:text-base text-gray-800 italic leading-relaxed font-normal">
+                "May Goddess Mahalakshmi bestow eternal light upon your household, purifying obstacles and gifting joyous prosperity."
+              </p>
+            </div>
+
+            <!-- Sacred Vedic Shloka -->
+            <div class="bg-deep-maroon/90 text-yellow-100 rounded-xl py-2.5 px-4 max-w-lg mx-auto text-xs sm:text-sm font-semibold tracking-wide border border-temple-gold/50 shadow-inner mb-4" id="blessingShloka">
+              ॥ शुभं करोति कल्याणमारोग्यं धनसंपदा ॥
+            </div>
+
+            <!-- Blessing Stamp & Auspicious Seal -->
+            <div class="pt-4 border-t border-temple-gold/25 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 gap-2">
+              <span id="blessingDateStamp" class="font-medium text-temple-gold">
+                Sanctified Offering • Shree Lakshmi Puja 2026
+              </span>
+              <span class="italic text-sacred-pink font-serif">
+                ॥ सर्वमंगलमांगल्ये शिवे सर्वार्थसाधिके ॥
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Card Actions (Hidden during print) -->
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3 no-print">
+            
+            <button onclick="copyBlessingText()" id="copyBlessingBtn" class="px-4 py-2.5 bg-white text-deep-maroon border border-temple-gold/60 rounded-xl text-xs font-semibold hover:bg-yellow-50 transition-colors flex items-center space-x-2 shadow-sm">
+              <i class="fa-regular fa-copy" id="copyIcon"></i>
+              <span id="copyBtnText">Copy Blessing</span>
+            </button>
+
+            <button onclick="window.print()" class="px-4 py-2.5 bg-sacred-pink text-white rounded-xl text-xs font-semibold hover:bg-pink-600 transition-colors flex items-center space-x-2 shadow-md hover:shadow-lg">
+              <i class="fa-solid fa-print"></i>
+              <span>Print / Save Card</span>
+            </button>
+
+            <a id="cardShareWa" href="https://api.whatsapp.com/send?text=Happy%20Shree%20Lakshmi%20Puja!" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition-colors flex items-center space-x-2 shadow-sm">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Share on WhatsApp</span>
+            </a>
+
+            <a id="cardShareX" href="https://x.com/intent/tweet?text=Happy%20Shree%20Lakshmi%20Puja!" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-black text-white rounded-xl text-xs font-semibold hover:bg-gray-800 transition-colors flex items-center space-x-2 shadow-sm" title="Share Blessing on X">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span>Share on X</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Festive Footer -->
+  <footer class="bg-night-temple text-white pt-16 pb-12 border-t-2 border-temple-gold/40 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-rose-200/10">
+        
+        <!-- Col 1: Brand & Blessing -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-sacred-pink to-temple-gold flex items-center justify-center text-white">
+              <i class="fa-solid fa-spa text-lg"></i>
+            </div>
+            <span class="font-display text-2xl font-bold text-yellow-100">Shree Lakshmi Puja</span>
+          </div>
+          <p class="text-xs text-rose-100/70 leading-relaxed max-w-md font-light">
+            Dedicated to illuminating the timeless spiritual tradition of Kojagari and Diwali Lakshmi Puja. May Goddess Mahalakshmi bestow peace, harmony, and eternal righteous abundance upon your dwelling.
+          </p>
+          <p class="text-xs text-temple-gold font-medium">
+            ॐ शान्तिः शान्तिः शान्तिः ॥
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="font-display text-sm font-bold text-temple-gold uppercase tracking-widest">Tradition & Lore</h4>
+          <ul class="text-xs text-rose-100/70 space-y-2">
+            <li><a href="#home" class="hover:text-white transition-colors">Home Tribute</a></li>
+            <li><a href="#significance" class="hover:text-white transition-colors">Ocean Churning Legend</a></li>
+            <li><a href="#ashta-lakshmi" class="hover:text-white transition-colors">Eight Manifestations</a></li>
+            <li><a href="#rituals" class="hover:text-white transition-colors">Puja Vidhi & Alpana</a></li>
+            <li><a href="#mantras" class="hover:text-white transition-colors">Vedic Mantras</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Festive Message & Sharing -->
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="font-display text-sm font-bold text-temple-gold uppercase tracking-widest">Share the Light</h4>
+          <p class="text-xs text-rose-100/70 leading-relaxed font-light">
+            Extend auspicious vibrations to your loved ones on WhatsApp, Telegram, or social circles this festive season.
+          </p>
+          <div class="flex space-x-3 text-sm">
+            <a href="https://api.whatsapp.com/send?text=Wishing%20you%20and%20your%20family%20a%20blessed%20and%20prosperous%20Lakshmi%20Puja!%20Light%20a%20virtual%20diya%20here:" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-sacred-pink flex items-center justify-center text-white transition-all" aria-label="Share on WhatsApp" title="Share on WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://x.com/intent/tweet?text=Shubh%20Lakshmi%20Puja!%20May%20Goddess%20Mahalakshmi%20grace%20every%20home%20with%20peace%20and%20abundance." target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-black hover:ring-2 hover:ring-white/40 flex items-center justify-center text-white transition-all" aria-label="Share on X (Twitter)" title="Share on X (Twitter)">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-sacred-pink flex items-center justify-center text-white transition-all" aria-label="Share on Facebook" title="Share on Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Bottom Tribute -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-rose-100/50 gap-4">
+        <p>© Dedicated to Mahalakshmi devotees worldwide. Created for cultural preservation & celebration.</p>
+        <div class="flex items-center space-x-2 text-temple-gold">
+          <i class="fa-solid fa-heart text-sacred-pink"></i>
+          <span>May prosperity illumine your path</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript -->
+  <script>
+    // Mobile Navigation Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isExpanded = mobileMenu.classList.toggle('hidden');
+        if (!isExpanded) {
+          menuIcon.classList.remove('fa-bars');
+          menuIcon.classList.add('fa-xmark');
+        } else {
+          menuIcon.classList.remove('fa-xmark');
+          menuIcon.classList.add('fa-bars');
+        }
+      });
+    }
+
+    // Close mobile menu when an anchor link is clicked
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+      });
+    });
+
+    // Synthetic Temple Bell Sound using Web Audio API
+    function playMantraBell() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+
+        const osc = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+
+        osc.type = 'sine';
+        // 587.33 Hz (D5 note, classic bell resonance)
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 2.5);
+
+        osc.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 2.5);
+      } catch (err) {
+        console.log("Audio API not allowed or supported prior to user gesture.");
+      }
+    }
+
+    // Virtual Diya & Blessing Generator Function
+    function lightVirtualDiya() {
+      const nameInput = document.getElementById('devoteeName').value.trim();
+      const blessingType = document.getElementById('blessingType').value;
+      const altarFlame = document.getElementById('altarFlame');
+      const diyaStatusText = document.getElementById('diyaStatusText');
+      const blessingResultCard = document.getElementById('blessingResultCard');
+      const recipientTitle = document.getElementById('blessingRecipientTitle');
+      const blessingMessage = document.getElementById('blessingMessage');
+      const blessingShloka = document.getElementById('blessingShloka');
+
+      if (!nameInput) return;
+
+      // Play bell chime
+      playMantraBell();
+
+      // Transform Diya to luminous state
+      altarFlame.className = "w-8 h-12 bg-gradient-to-t from-orange-500 via-yellow-300 to-white rounded-full mx-auto diya-flame-animated shadow-[0_0_35px_#ff9800] transition-all duration-700 opacity-100";
+      diyaStatusText.innerText = "🪔 Sacred Diya is Glowing for " + nameInput;
+      diyaStatusText.className = "text-xs font-bold text-kumkum mt-4 tracking-wide uppercase";
+
+      // Trigger Festive Confetti (Flowers & Golden sparkles)
+      triggerFestiveConfetti();
+
+      // Craft custom blessing copy
+      const blessingDictionary = {
+        abundance: {
+          tag: "Dhana & Dhanya Lakshmi Sankalpa",
+          msg: "May Goddess Dhana & Dhanya Lakshmi fill your storerooms, hearth, and accounts with honest plenty, ensuring your family never witnesses famine and can joyously feed the hungry.",
+          shloka: "॥ ॐ श्रीं महालक्ष्म्यै नमः - अष्टैश्वर्य प्रदायिनी ॥"
+        },
+        wisdom: {
+          tag: "Vidya Lakshmi Sankalpa",
+          msg: "May Vidya Lakshmi bestow clarity of thought, eloquence in speech, and deep discernment so your choices in life bring peace and honorable renown.",
+          shloka: "॥ बुद्धिं देहि यशो देहि भाग्यं भगवति देहि मे ॥"
+        },
+        health: {
+          tag: "Adi Lakshmi Sankalpa",
+          msg: "May Adi Lakshmi shield your mind and body from distress, granting vibrant longevity, resilience against sickness, and profound inner serenity.",
+          shloka: "॥ आरोग्यं धनसंपदं शत्रुबुद्धिविनाशाय दीपज्योतिर्नमोऽस्तुते ॥"
+        },
+        family: {
+          tag: "Santana Lakshmi Sankalpa",
+          msg: "May Santana Lakshmi bring warm unity, love, and protection to your household, blessing generations with goodwill and mutual respect.",
+          shloka: "॥ सर्वमंगलमांगल्ये शिवे सर्वार्थसाधिके ॥"
+        },
+        success: {
+          tag: "Vijaya Lakshmi Sankalpa",
+          msg: "May Vijaya Lakshmi stand by you in all righteous deeds, turning obstacles into triumphs and keeping your faith strong under pressure.",
+          shloka: "॥ जय देवी महालक्ष्मि संकष्टनाशिनी ॥"
+        }
+      };
+
+      const selected = blessingDictionary[blessingType] || blessingDictionary.abundance;
+
+      recipientTitle.innerText = "Blessings for " + nameInput;
+      const categoryTag = document.getElementById('blessingCategoryTag');
+      if (categoryTag) categoryTag.innerText = selected.tag;
+      blessingMessage.innerText = `"${selected.msg}"`;
+      blessingShloka.innerText = selected.shloka;
+
+      // Update Card Date Stamp
+      const dateElement = document.getElementById('blessingDateStamp');
+      if (dateElement) {
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.innerText = "Sanctified Offering • " + today.toLocaleDateString('en-US', options);
+      }
+
+      // Update Social Sharing links on the Card
+      const shareText = `🪔 Received divine blessings of Goddess Mahalakshmi for ${nameInput}: "${selected.msg}"\n${selected.shloka}\nHappy Shree Lakshmi Puja!`;
+      const cardShareX = document.getElementById('cardShareX');
+      if (cardShareX) {
+        cardShareX.href = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+      }
+      const cardShareWa = document.getElementById('cardShareWa');
+      if (cardShareWa) {
+        cardShareWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+      }
+
+      // Reveal card
+      blessingResultCard.classList.remove('hidden');
+      blessingResultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Golden & Petal Confetti Generator
+    function triggerFestiveConfetti() {
+      const container = document.getElementById('confettiContainer');
+      container.innerHTML = '';
+      const colors = ['#D4AF37', '#FF8F00', '#E91E63', '#FFD54F', '#B71C1C'];
+
+      for (let i = 0; i < 45; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = (Math.random() * 1.5) + 's';
+        confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        container.appendChild(confetti);
+      }
+
+      setTimeout(() => {
+        container.innerHTML = '';
+      }, 5000);
+    }
+
+    // Copy Blessing to Clipboard
+    function copyBlessingText() {
+      const title = document.getElementById('blessingRecipientTitle').innerText;
+      const message = document.getElementById('blessingMessage').innerText;
+      const shloka = document.getElementById('blessingShloka').innerText;
+      const fullText = `🪔 ${title} 🪔\n\n${message}\n\n${shloka}\n\nMay Goddess Mahalakshmi bless your home with prosperity & joy! 🪔\nHappy Shree Lakshmi Puja!`;
+
+      navigator.clipboard.writeText(fullText).then(() => {
+        const copyBtnText = document.getElementById('copyBtnText');
+        const copyIcon = document.getElementById('copyIcon');
+        copyBtnText.innerText = "Copied to Clipboard!";
+        if (copyIcon) {
+          copyIcon.className = "fa-solid fa-check text-green-600";
+        }
+        setTimeout(() => {
+          copyBtnText.innerText = "Copy Blessing";
+          if (copyIcon) {
+            copyIcon.className = "fa-regular fa-copy";
+          }
+        }, 2500);
+      }).catch(err => {
+        console.error("Copy failed", err);
+      });
+    }
+  </script>
+</body>
+</html>
