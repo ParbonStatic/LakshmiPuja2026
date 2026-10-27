@@ -891,9 +891,9 @@
               <span id="copyBtnText">Copy Blessing</span>
             </button>
 
-            <button onclick="window.print()" class="px-4 py-2.5 bg-sacred-pink text-white rounded-xl text-xs font-semibold hover:bg-pink-600 transition-colors flex items-center space-x-2 shadow-md hover:shadow-lg">
-              <i class="fa-solid fa-print"></i>
-              <span>Print / Save Card</span>
+            <button onclick="downloadBlessingCardPNG()" id="downloadCardBtn" class="px-4 py-2.5 bg-sacred-pink text-white rounded-xl text-xs font-semibold hover:bg-pink-600 transition-colors flex items-center space-x-2 shadow-md hover:shadow-lg">
+              <i class="fa-solid fa-download" id="downloadCardIcon"></i>
+              <span id="downloadCardText">Save Card as PNG</span>
             </button>
 
             <a id="cardShareWa" href="https://api.whatsapp.com/send?text=Happy%20Shree%20Lakshmi%20Puja!" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition-colors flex items-center space-x-2 shadow-sm">
@@ -1172,6 +1172,336 @@
       }).catch(err => {
         console.error("Copy failed", err);
       });
+    }
+
+    // Helper: Draw rounded rectangle path on Canvas 2D context
+    function drawRoundedRect(ctx, x, y, width, height, radius) {
+      const r = Math.min(radius, width / 2, height / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + width - r, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+      ctx.lineTo(x + width, y + height - r);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+      ctx.lineTo(x + r, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    // Helper: Wrap text into lines fitting maxWidth
+    function wrapCanvasText(ctx, text, maxWidth) {
+      const words = text.split(/\s+/);
+      const lines = [];
+      let currentLine = words[0] || '';
+
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const testLine = currentLine + ' ' + word;
+        if (ctx.measureText(testLine).width <= maxWidth) {
+          currentLine = testLine;
+        } else {
+          lines.push(currentLine);
+          currentLine = word;
+        }
+      }
+      if (currentLine) lines.push(currentLine);
+      return lines;
+    }
+
+    // Generate and Download Virtual Diya Blessing Card as High-Res PNG
+    async function downloadBlessingCardPNG() {
+      const downloadBtnText = document.getElementById('downloadCardText');
+      const downloadIcon = document.getElementById('downloadCardIcon');
+
+      if (downloadBtnText) downloadBtnText.innerText = "Generating PNG...";
+
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+      } catch (e) {
+        // Proceed with available system/web fonts
+      }
+
+      const recipientTitle = (document.getElementById('blessingRecipientTitle')?.innerText || 'Blessings for Devotee').trim();
+      const categoryTag = (document.getElementById('blessingCategoryTag')?.innerText || 'Dhana & Dhanya Lakshmi Sankalpa').trim();
+      const message = (document.getElementById('blessingMessage')?.innerText || '').trim();
+      const shloka = (document.getElementById('blessingShloka')?.innerText || '').trim();
+      const dateStamp = (document.getElementById('blessingDateStamp')?.innerText || 'Sanctified Offering • Shree Lakshmi Puja 2026').trim();
+
+      const scale = 2; // Retina 2x crisp output
+      const cardW = 820;
+      const padX = 56;
+      const contentMaxW = cardW - padX * 2;
+
+      // Measure wrapped text using an offscreen context
+      const measureCanvas = document.createElement('canvas');
+      const mCtx = measureCanvas.getContext('2d');
+
+      mCtx.font = 'bold 34px "Playfair Display", Georgia, serif';
+      const titleLines = wrapCanvasText(mCtx, recipientTitle, contentMaxW - 40);
+
+      mCtx.font = 'italic 18px "Poppins", sans-serif';
+      const msgLines = wrapCanvasText(mCtx, message, contentMaxW - 80);
+
+      mCtx.font = '600 16px "Poppins", sans-serif';
+      const shlokaLines = wrapCanvasText(mCtx, shloka, contentMaxW - 80);
+
+      const titleBlockH = titleLines.length * 42;
+      const msgBoxH = Math.max(96, msgLines.length * 28 + 44);
+      const shlokaBoxH = Math.max(48, shlokaLines.length * 24 + 24);
+
+      const cardH = 310 + titleBlockH + msgBoxH + shlokaBoxH + 85;
+      const outerMargin = 24;
+      const totalW = cardW + outerMargin * 2;
+      const totalH = cardH + outerMargin * 2;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = totalW * scale;
+      canvas.height = totalH * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(scale, scale);
+
+      // Outer backdrop fill
+      ctx.fillStyle = '#FFFDF8';
+      ctx.fillRect(0, 0, totalW, totalH);
+
+      const cx = outerMargin;
+      const cy = outerMargin;
+      const centerX = cx + cardW / 2;
+
+      // Soft outer gold halo border
+      ctx.save();
+      drawRoundedRect(ctx, cx - 4, cy - 4, cardW + 8, cardH + 8, 28);
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
+      ctx.lineWidth = 8;
+      ctx.stroke();
+      ctx.restore();
+
+      // Main Card Surface with radial festive glows
+      ctx.save();
+      drawRoundedRect(ctx, cx, cy, cardW, cardH, 24);
+      ctx.fillStyle = '#FFFDF8';
+      ctx.fill();
+      ctx.clip();
+
+      const tlGlow = ctx.createRadialGradient(cx, cy, 10, cx, cy, cardW * 0.7);
+      tlGlow.addColorStop(0, 'rgba(212, 175, 55, 0.14)');
+      tlGlow.addColorStop(1, 'rgba(212, 175, 55, 0)');
+      ctx.fillStyle = tlGlow;
+      ctx.fillRect(cx, cy, cardW, cardH);
+
+      const brGlow = ctx.createRadialGradient(cx + cardW, cy + cardH, 10, cx + cardW, cy + cardH, cardW * 0.7);
+      brGlow.addColorStop(0, 'rgba(233, 30, 99, 0.10)');
+      brGlow.addColorStop(1, 'rgba(233, 30, 99, 0)');
+      ctx.fillStyle = brGlow;
+      ctx.fillRect(cx, cy, cardW, cardH);
+      ctx.restore();
+
+      // Primary Gold Card Border
+      drawRoundedRect(ctx, cx, cy, cardW, cardH, 24);
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Traditional Corner Accents (❖)
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.65)';
+      ctx.font = '18px "Poppins", sans-serif';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'left';
+      ctx.fillText('❖', cx + 18, cy + 24);
+      ctx.fillText('❖', cx + 18, cy + cardH - 24);
+      ctx.textAlign = 'right';
+      ctx.fillText('❖', cx + cardW - 18, cy + 24);
+      ctx.fillText('❖', cx + cardW - 18, cy + cardH - 24);
+
+      let cursorY = cy + 44;
+
+      // 1. Auspicious Header
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#E91E63';
+      ctx.font = 'bold 13px "Poppins", sans-serif';
+      ctx.fillText('🪔   ॐ श्रीं महालक्ष्म्यै नमः   🪔', centerX, cursorY);
+
+      cursorY += 34;
+
+      // 2. Mahaprasad & Divine Blessing Card Gradient Badge
+      const badgeText = 'महाप्रसाद & DIVINE BLESSING CARD';
+      ctx.font = 'bold 11.5px "Poppins", sans-serif';
+      const badgeW = Math.max(270, ctx.measureText(badgeText).width + 38);
+      const badgeH = 30;
+      const badgeX = centerX - badgeW / 2;
+      const badgeY = cursorY - badgeH / 2;
+
+      const badgeGrad = ctx.createLinearGradient(badgeX, badgeY, badgeX + badgeW, badgeY);
+      badgeGrad.addColorStop(0, '#B71C1C');
+      badgeGrad.addColorStop(0.5, '#E91E63');
+      badgeGrad.addColorStop(1, '#D4AF37');
+
+      drawRoundedRect(ctx, badgeX, badgeY, badgeW, badgeH, 15);
+      ctx.fillStyle = badgeGrad;
+      ctx.fill();
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(badgeText, centerX, cursorY + 1);
+
+      cursorY += 46;
+
+      // 3. Sacred Lotus Emblem Circle
+      const lotusR = 24;
+      ctx.beginPath();
+      ctx.arc(centerX, cursorY, lotusR, 0, Math.PI * 2);
+      ctx.fillStyle = '#FCE4EC';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Draw crisp symmetrical Lotus vector inside circle
+      ctx.save();
+      ctx.translate(centerX, cursorY + 5);
+      ctx.fillStyle = '#E91E63';
+      // Side outer petals
+      [-1, 1].forEach(dir => {
+        ctx.beginPath();
+        ctx.moveTo(0, 2);
+        ctx.quadraticCurveTo(dir * 14, 2, dir * 13, -7);
+        ctx.quadraticCurveTo(dir * 7, -9, 0, 2);
+        ctx.fill();
+      });
+      // Mid petals
+      [-1, 1].forEach(dir => {
+        ctx.beginPath();
+        ctx.moveTo(0, 2);
+        ctx.quadraticCurveTo(dir * 10, -5, dir * 8, -13);
+        ctx.quadraticCurveTo(dir * 2, -10, 0, 2);
+        ctx.fill();
+      });
+      // Center petal
+      ctx.beginPath();
+      ctx.moveTo(0, 3);
+      ctx.quadraticCurveTo(-6, -7, 0, -16);
+      ctx.quadraticCurveTo(6, -7, 0, 3);
+      ctx.fill();
+      ctx.restore();
+
+      cursorY += 52;
+
+      // 4. Recipient Title
+      ctx.fillStyle = '#4A0E17';
+      ctx.font = 'bold 32px "Playfair Display", Georgia, serif';
+      titleLines.forEach(line => {
+        ctx.fillText(line, centerX, cursorY);
+        cursorY += 40;
+      });
+
+      cursorY += 4;
+
+      // 5. Sankalpa Category Pill
+      ctx.font = '600 13px "Poppins", sans-serif';
+      const tagW = Math.max(220, ctx.measureText(categoryTag).width + 32);
+      const tagH = 28;
+      const tagX = centerX - tagW / 2;
+      const tagY = cursorY - tagH / 2;
+
+      drawRoundedRect(ctx, tagX, tagY, tagW, tagH, 14);
+      ctx.fillStyle = '#FFFBEB';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.fillStyle = '#AA820A';
+      ctx.fillText(categoryTag, centerX, cursorY + 1);
+
+      cursorY += 36;
+
+      // 6. Blessing Message Box
+      const msgBoxW = contentMaxW - 24;
+      const msgBoxX = centerX - msgBoxW / 2;
+      const msgBoxY = cursorY;
+
+      drawRoundedRect(ctx, msgBoxX, msgBoxY, msgBoxW, msgBoxH, 16);
+      ctx.fillStyle = 'rgba(255, 251, 235, 0.75)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#1F2937';
+      ctx.font = 'italic 17px "Poppins", sans-serif';
+      const msgStartY = msgBoxY + (msgBoxH - (msgLines.length - 1) * 28) / 2;
+      msgLines.forEach((line, idx) => {
+        ctx.fillText(line, centerX, msgStartY + idx * 28);
+      });
+
+      cursorY += msgBoxH + 20;
+
+      // 7. Sacred Vedic Shloka Pill Box
+      const shlokaBoxW = Math.min(contentMaxW - 60, 560);
+      const shlokaBoxX = centerX - shlokaBoxW / 2;
+      const shlokaBoxY = cursorY;
+
+      drawRoundedRect(ctx, shlokaBoxX, shlokaBoxY, shlokaBoxW, shlokaBoxH, 12);
+      ctx.fillStyle = '#4A0E17';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.6)';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#FEF9C3';
+      ctx.font = '600 15px "Poppins", sans-serif';
+      const shlokaStartY = shlokaBoxY + (shlokaBoxH - (shlokaLines.length - 1) * 24) / 2;
+      shlokaLines.forEach((line, idx) => {
+        ctx.fillText(line, centerX, shlokaStartY + idx * 24);
+      });
+
+      cursorY += shlokaBoxH + 26;
+
+      // 8. Footer Divider & Stamp
+      ctx.beginPath();
+      ctx.moveTo(cx + padX, cursorY);
+      ctx.lineTo(cx + cardW - padX, cursorY);
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      const footerY = cursorY + 26;
+      ctx.font = '500 12px "Poppins", sans-serif';
+      ctx.fillStyle = '#D4AF37';
+      ctx.textAlign = 'left';
+      ctx.fillText(dateStamp, cx + padX, footerY);
+
+      ctx.font = 'italic 12.5px Georgia, serif';
+      ctx.fillStyle = '#E91E63';
+      ctx.textAlign = 'right';
+      ctx.fillText('॥ सर्वमंगलमांगल्ये शिवे सर्वार्थसाधिके ॥', cx + cardW - padX, footerY);
+
+      // Trigger PNG Download
+      const devoteeInput = (document.getElementById('devoteeName')?.value || 'Devotee').trim();
+      const safeName = devoteeInput.replace(/[^a-zA-Z0-9_-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || 'Devotee';
+      const fileName = `Lakshmi-Puja-Blessing-Card-${safeName}.png`;
+
+      canvas.toBlob(blob => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 3000);
+
+        if (downloadBtnText) downloadBtnText.innerText = "Saved as PNG!";
+        if (downloadIcon) downloadIcon.className = "fa-solid fa-check";
+        setTimeout(() => {
+          if (downloadBtnText) downloadBtnText.innerText = "Save Card as PNG";
+          if (downloadIcon) downloadIcon.className = "fa-solid fa-download";
+        }, 2500);
+      }, 'image/png');
     }
   </script>
 </body>
